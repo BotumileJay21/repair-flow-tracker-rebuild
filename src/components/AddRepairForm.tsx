@@ -20,6 +20,7 @@ const AddRepairForm: React.FC<AddRepairFormProps> = ({ onBack, onSaved }) => {
     phone: '',
     deviceType: '',
     issueDescription: '',
+    estimationPrice: '',
     expectedCompletion: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -41,6 +42,7 @@ const AddRepairForm: React.FC<AddRepairFormProps> = ({ onBack, onSaved }) => {
         id: Date.now().toString(),
         orderNumber,
         ...formData,
+        estimationPrice: formData.estimationPrice ? parseFloat(formData.estimationPrice) : undefined,
         dateReceived: new Date().toISOString().split('T')[0],
         status: 'Received',
         createdAt: new Date().toISOString()
@@ -150,6 +152,22 @@ const AddRepairForm: React.FC<AddRepairFormProps> = ({ onBack, onSaved }) => {
                 <option value="Tablet">Tablet</option>
                 <option value="Other">Other</option>
               </select>
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Estimation Price ($)
+              </label>
+              <input
+                type="number"
+                name="estimationPrice"
+                value={formData.estimationPrice}
+                onChange={handleChange}
+                min="0"
+                step="0.01"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                placeholder="Enter estimated price"
+              />
             </div>
 
             <div>

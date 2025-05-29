@@ -132,6 +132,12 @@ const ClientLookup: React.FC = () => {
                     <span className="text-gray-600">Date Received:</span>
                     <span className="font-medium">{new Date(repair.dateReceived).toLocaleDateString()}</span>
                   </div>
+                  {repair.estimationPrice && (
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">Estimated Price:</span>
+                      <span className="font-medium">${repair.estimationPrice.toFixed(2)}</span>
+                    </div>
+                  )}
                   {repair.expectedCompletion && (
                     <div className="flex justify-between">
                       <span className="text-gray-600">Expected Completion:</span>

@@ -7,6 +7,7 @@ export interface Repair {
   phone: string;
   deviceType: string;
   issueDescription: string;
+  estimationPrice?: number;
   dateReceived: string;
   status: 'Received' | 'Diagnosing' | 'Repairing' | 'Completed';
   expectedCompletion?: string;
